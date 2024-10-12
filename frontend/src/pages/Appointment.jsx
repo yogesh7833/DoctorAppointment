@@ -53,11 +53,23 @@ const Appointment = () => {
       while(currentDate<endTime){
         let formattedTime=currentDate.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})
            
+        let day = currentDate.getDate()
+        let month=currentDate.getMonth()+1
+        let year=currentDate.getFullYear()
+
+        const slotDate=day +"_" + month + "_" + year
+        const slotTime=formattedTime
+
+        const isSlotAvailable= docInfo.slots_booked[slotDate] && docInfo.slots_booked[slotDate].includes(slotTime) ? false :true
+
+        if(isSlotAvailable){
+          timeSlots.push({
+            datetime:new Date(currentDate),
+            time:formattedTime
+          })
+        }
         //add slots to array
-        timeSlots.push({
-          datetime:new Date(currentDate),
-          time:formattedTime
-        })
+        
 
         // increment current by 30 minut 
         currentDate.setMinutes(currentDate.getMinutes()+30)
@@ -66,6 +78,60 @@ const Appointment = () => {
     }
     
   }
+  // const getAvailableSlots = async () => {
+  //   setDocSlots([]); // Reset slots
+  
+  //   // Get current date
+  //   let today = new Date();
+  
+  //   for (let i = 0; i < 7; i++) {
+  //     // Get date and index
+  //     let currentDate = new Date(today);
+  //     currentDate.setDate(today.getDate() + i);
+  
+  //     // Set end time of the date with index
+  //     let endTime = new Date(currentDate);
+  //     endTime.setHours(21, 0, 0, 0);
+  
+  //     // Set hours
+  //     if (today.getDate() === currentDate.getDate()) {
+  //       currentDate.setHours(currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10);
+  //       currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
+  //     } else {
+  //       currentDate.setHours(10);
+  //       currentDate.setMinutes(0);
+  //     }
+  
+  //     let timeSlots = [];
+  //     while (currentDate < endTime) {
+  //       let formattedTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  
+  //       let day = currentDate.getDate();
+  //       let month = currentDate.getMonth() + 1;
+  //       let year = currentDate.getFullYear();
+  
+  //       const slotDate = `${day}_${month}_${year}`;
+  //       const slotTime = formattedTime;
+  
+  //       // Check if docInfo and slots_booked exist before accessing
+  //       const isSlotAvailable = docInfo && docInfo.slots_booked && docInfo.slots_booked[slotDate] &&
+  //         docInfo.slots_booked[slotDate].includes(slotTime) ? false : true;
+  
+  //       if (isSlotAvailable) {
+  //         timeSlots.push({
+  //           datetime: new Date(currentDate),
+  //           time: formattedTime
+  //         });
+  //       }
+  
+  //       // Increment current time by 30 minutes
+  //       currentDate.setMinutes(currentDate.getMinutes() + 30);
+  //     }
+  
+  //     // Add the time slots for this date to the state
+  //     setDocSlots(prev => [...prev, timeSlots]);
+  //   }
+  // };
 
   const bookAppointment= async ()=>{
     if(!token){
@@ -105,7 +171,7 @@ const Appointment = () => {
   },[doctors,docId])
 
   useEffect(()=>{
-    getAvailableSlots();
+    getAvailableSlots()
   },[docInfo])
 
   useEffect(()=>{
