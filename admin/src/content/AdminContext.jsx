@@ -11,6 +11,7 @@ const AdminContextProvider = (props)=>{
     const [doctors,setDoctors]=useState([])
     const [appointments,setAppointments]=useState([])
     const backendUrl=import.meta.env.VITE_BACKEND_URL
+    const [dashData,setDashData]=useState(false)
  
 
     const getAllDoctors= async ()=>{
@@ -61,12 +62,58 @@ const AdminContextProvider = (props)=>{
             toast.error(error.message)
         }
     }
+    
+    // const cancelAppointment= async(appointmentId)=>{
+    //    try {
+
+    //     const {data}=axios.post(backendUrl + '/api/admin/cancel-appointment',{appointmentId},{headers:{aToken}})
+    //     if(data.success){
+    //         toast.success(data.message)
+    //         getAllAppointments()
+    //     }else{
+    //         toast.error(data.message);
+    //     }
+    //    } catch (error) {
+    //     toast.error(error.message)
+    //    }
+    // }
+    const cancelAppointment = async (appointmentId) => {
+        try {
+          // Await the axios post request
+          const { data } = await axios.post(backendUrl + '/api/admin/cancel-appointment', { appointmentId }, { headers: { aToken } });
+      
+          if (data.success) {
+            toast.success(data.message);
+            // Refresh the list of appointments after successful cancellation
+            await getAllAppointments();
+          } else {
+            toast.error(data.message);
+          }
+        } catch (error) {
+          toast.error(error.message);
+        }
+      };
+        
+      const getDashData=async ()=>{
+        try {
+            const {data}=await axios.get(backendUrl + '/api/admin/dashboard',{headers:{aToken}})
+            if(data.success){
+                setDashData(data.dashData)
+                console.log(data.dashData)
+            }else{
+                toast.error(data.message)
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
+      }
 
 
     const value = {
       aToken,setAToken,
       backendUrl,doctors,getAllDoctors,changeAvailability,
-      appointments,setAppointments,getAllAppointments
+      appointments,setAppointments,getAllAppointments,cancelAppointment,
+      dashData,getDashData
 
     }
     return (
