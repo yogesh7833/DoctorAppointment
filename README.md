@@ -1,10 +1,10 @@
 ﻿# DoctorAppointment
 
  
-#Overview
+# Overview
 QuickCure is a user-friendly doctor appointment platform that streamlines the process of booking medical appointments. It features role-based access for users, doctors, and administrators, ensuring efficient management of schedules and services. The platform includes secure login and signup functionality, a categorized list of doctors by specialty, and integrated payment through Razorpay for a seamless experience.
 
-#Features
+# Features
 User Login and Signup Functionality:
 
 Signup:
@@ -39,7 +39,7 @@ Users can make payments via Razorpay directly on the platform after booking an a
 Responsive Design:
 The website is fully responsive and optimized for desktops, tablets, and mobile devices.
 
-#How It Works
+# How It Works
 
 Signup Process:
 The user fills out the registration form with required details.
@@ -66,7 +66,7 @@ After confirming the appointment, the user is redirected to the Razorpay payment
 Payment status is updated in real-time and reflected in the user and doctor dashboards.
 
 
-#Tech Stack
+# Tech Stack
 Frontend: React.js, Tailwind CSS, HTML, CSS
 Backend: Node.js, Express.js
 Database: MongoDB
