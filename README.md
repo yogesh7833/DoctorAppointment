@@ -6,10 +6,13 @@ Features
 User Login and Signup Functionality:
 
 Signup:
-->Users can register by providing their basic information such as name, email, password, and phone number. Data is validated to ensure no duplicate accounts are created. Passwords are securely stored using hashing for security.
+-> Users can register by providing their basic information such as name, email, password, and phone number. Data is validated to ensure no duplicate accounts are created. Passwords are securely stored using hashing for security.
+
 
 Login:
-->Registered users can log in using their email and password. Once authenticated, users gain access to their dashboard to book or manage appointments.
+-> Registered users can log in using their email and password. Once authenticated, users gain access to their dashboard to book or manage appointments.
+
+
 Role-based Authentication:
 Different user roles (user, doctor, admin) are assigned upon registration or admin approval. Access is controlled to ensure that each role can only perform actions relevant to them.
 
@@ -21,18 +24,18 @@ Appointment Booking:
 
 Admin and Doctor Panels:
 Admin Panel:
-The admin can manage user accounts, approve or reject doctors, and monitor platform activity.
+->The admin can manage user accounts, approve or reject doctors, and monitor platform activity.
 
 Doctor Panel:
-Doctors can view and manage their appointments, approve or decline appointment requests, and update their availability.
+->Doctors can view and manage their appointments, approve or decline appointment requests, and update their availability.
 
 
 Payment Integration with Razorpay:
-The platform provides secure and seamless payment options for appointments.
-Users can make payments via Razorpay directly on the platform after booking an appointment.
+->The platform provides secure and seamless payment options for appointments.
+->Users can make payments via Razorpay directly on the platform after booking an appointment.
 
 Responsive Design:
-The website is fully responsive and optimized for desktops, tablets, and mobile devices.
+->The website is fully responsive and optimized for desktops, tablets, and mobile devices.
 
 How It Works
 
