@@ -1,6 +1,15 @@
 ﻿# DoctorAppointment
+#Testing->
 
- 
+For Admin login
+ADMIN_EMAIL='yogeshkus@gmail.com'
+ADMIN_PASSWORD='12121212'
+
+For Docotor Login->
+DoctorEmail= emily@gmail.com
+DoctorPassword = 12345678
+
+
 # Overview
 QuickCure is a user-friendly doctor appointment platform that streamlines the process of booking medical appointments. It features role-based access for users, doctors, and administrators, ensuring efficient management of schedules and services. The platform includes secure login and signup functionality, a categorized list of doctors by specialty, and integrated payment through Razorpay for a seamless experience.
 
