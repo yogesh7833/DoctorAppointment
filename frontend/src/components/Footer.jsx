@@ -38,7 +38,7 @@ const Footer = () => {
         {/* copy right text  */}
         <div>
             <hr/>
-            <p className='py-5 text-sm text-center '>Created with ❤️ By Yogesh</p>
+            <p className='py-5 text-sm text-center '>Created with ❤️ By </p>
         </div>
     </div>
   )
